@@ -1,0 +1,12 @@
+{
+  "id": "hello",
+  "name": "👋 Hello Office",
+  "version": "1.0.0",
+  "description": "The official BagIdea Office plugin template — reads live office data, posts to the feed, and shows every plugin pattern. Fork it to build your own.",
+  "panel": "panel.html",
+  "commands": [
+    { "name": "greet", "args": "[name]", "desc": "Post a friendly hello to the office feed" },
+    { "name": "roster", "args": "", "desc": "List the agents currently in the office" }
+  ],
+  "needsKeys": []
+}
