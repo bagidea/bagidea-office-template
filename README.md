@@ -37,6 +37,8 @@ bagidea plugin remove hello
 | `plugin.json` | The manifest — id, name, the commands agents can call. **Required.** |
 | `index.js` | Server side — `(ctx) => ({ onCommand, routes })`. Where the logic lives. |
 | `panel.html` | The UI the user opens. Talks to your routes; stays live over WebSocket. |
+
+**Pop it out:** the user can open your panel as its own resizable window (the ⤢ button) — set a default size with `"window": { "w": 460, "h": 620, "resizable": true }` in `plugin.json`, and keep your layout fluid so it scales. Same `panel.html`, two ways to view it.
 | `CLAUDE.md` | Context for Claude/AI agents extending this plugin. |
 | `data/` | Auto-created private storage (gitignored). |
 

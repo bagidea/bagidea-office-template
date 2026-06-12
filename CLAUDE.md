@@ -52,5 +52,19 @@ When you change something an agent or the user should see, call
 - One command = one clear `reply()`. Validate `args` before acting.
 - Match the office dark theme in any UI.
 
+## Pop-out window
+A panel can be popped out of the overlay into its **own resizable OS window**
+(the ⤢ button), shown inside a custom dark title-bar frame — your `panel.html`
+is the body. Design for it:
+- Make the layout **fluid** (`%` / `vh` / flex, never a hard-coded width/height)
+  so it looks right at any size.
+- Declare a sensible default in `plugin.json`:
+  `"window": { "w": 460, "h": 620, "resizable": true }` (defaults to 900x680).
+  Use `"resizable": false` for a fixed-size tool.
+- The SAME `panel.html` serves both the in-overlay view and the window — build once.
+- Each plugin opens ONE window (re-clicking ⤢ just focuses it); different plugins
+  open side by side. This is how a plugin grows into a real standalone app.
+
+
 Full reference (always defer to it): the office repo's
 `docs/guide/plugins.md`.
