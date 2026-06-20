@@ -14,7 +14,10 @@
 <style>
   :root { --bg:#0c1322; --fg:#dbe7ff; --dim:#7e8db0; --accent:#5ec8ff; --card:#13203a; }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: system-ui, "Segoe UI", sans-serif; background:var(--bg); color:var(--fg); padding:18px; }
+  /* Multilingual fallback chain so non-Latin text (Thai/CJK/…) — agent names,
+     user input, file names — renders instead of blank glyphs. Keep this when
+     you fork: Leelawadee UI/Tahoma cover Thai on Windows, Noto covers Linux. */
+  body { margin:0; font-family: system-ui, "Segoe UI", "Leelawadee UI", Tahoma, "Noto Sans Thai", "Noto Sans CJK", sans-serif; background:var(--bg); color:var(--fg); padding:18px; }
   /* Slim on-theme scrollbar — match the office overlay so panels feel native
      (without this you get the chunky default browser scrollbar). */
   html { scrollbar-width: thin; scrollbar-color: rgba(110,180,255,.3) transparent; }

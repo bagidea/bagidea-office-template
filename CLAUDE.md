@@ -51,6 +51,18 @@ When you change something an agent or the user should see, call
 - Don't touch other plugins' folders or the office's own files destructively.
 - One command = one clear `reply()`. Validate `args` before acting.
 - Match the office dark theme in any UI.
+- **The office UI is used in 14 languages — never assume ASCII.** When you
+  sanitize a filename or any user/agent text, don't whitelist with `\w` /
+  `[A-Za-z0-9]` (that deletes Thai, Chinese, Arabic, … turning names into "_").
+  Strip only what's unsafe, keep all letters. For a filename:
+  ```js
+  const safe = raw.split(/[\\/]/).pop()        // basename → blocks ../ traversal
+    .replace(/[\x00-\x1f<>:"|?*]/g, "_")        // control + Windows-reserved → _
+    .replace(/^\.+/, "").trim();                // no leading dots
+  ```
+  In `panel.html`, give `font-family` a multilingual fallback (e.g.
+  `system-ui,"Segoe UI","Leelawadee UI",Tahoma,"Noto Sans Thai","Noto Sans CJK",sans-serif`)
+  so non-Latin text renders instead of blank glyphs.
 
 ## Pop-out window
 A panel can be popped out of the overlay into its **own resizable OS window**
